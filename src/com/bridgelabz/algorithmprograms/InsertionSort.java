@@ -2,14 +2,14 @@ package com.bridgelabz.algorithmprograms;
 
 import java.util.Scanner;
 
-public class InsertionSort {
+public class InsertionSort<T extends Comparable<T>> {
 
-	public void insertionSort(String[] wordArray) {
+	public void insertionSort(T[] wordArray) {
 
 		int sizeOfArray = wordArray.length;
 
 		for (int index = 1; index < sizeOfArray; ++index) {
-			String current = wordArray[index];
+			T current = wordArray[index];
 			int previousIndex = index - 1;
 
 			while (previousIndex >= 0 && wordArray[previousIndex].compareTo(current) > 0) {
@@ -22,7 +22,7 @@ public class InsertionSort {
 		printArray(wordArray);
 	}
 
-	public void printArray(String[] wordArray) {
+	public void printArray(T[] wordArray) {
 		int sizeOfArray = wordArray.length;
 		for (int index = 0; index < sizeOfArray; index++) {
 			System.out.print(wordArray[index] + " ");
@@ -31,24 +31,24 @@ public class InsertionSort {
 
 	public static void main(String[] args) {
 
-		InsertionSort sortObject = new InsertionSort();
+		InsertionSort<Integer> sortObject = new InsertionSort<Integer>();
 		Scanner scannerObject = new Scanner(System.in);
 
-		System.out.println("Enter the number of words: ");
+		System.out.println("Enter the Size Of The Array: ");
 		int sizeOfArray = scannerObject.nextInt();
-		String[] wordArray = new String[sizeOfArray];
+		Integer[] arrayToBoSorted = new Integer[sizeOfArray];
 
-		System.out.println("Enter words");
+		System.out.println("Enter the Array Elements");
 		for (int index = 0; index < sizeOfArray; index++) {
-			String word = scannerObject.next();
-			wordArray[index] = word;
+			Integer word = scannerObject.nextInt();
+			arrayToBoSorted[index] = word;
 		}
 		scannerObject.close();
 
-		System.out.println("The array of words are : ");
-		sortObject.printArray(wordArray);
+		System.out.println("The Array is : ");
+		sortObject.printArray(arrayToBoSorted);
 		System.out.println("");
-		sortObject.insertionSort(wordArray);
+		sortObject.insertionSort(arrayToBoSorted);
 
 	}
 
