@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class BubbleSort {
 
-	public void BubbleSorting(Integer[] numberArray) {
+	public void bubbleSorting(Integer[] numberArray) {
 
 		int sizeOfArray = numberArray.length;
 
@@ -47,7 +47,7 @@ public class BubbleSort {
 		System.out.println("The array of numbers are : ");
 		sortObject.printArray(numberArray);
 		System.out.println("");
-		sortObject.BubbleSorting(numberArray);
+		sortObject.bubbleSorting(numberArray);
 
 	}
 
