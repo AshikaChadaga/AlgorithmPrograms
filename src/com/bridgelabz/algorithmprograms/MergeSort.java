@@ -2,15 +2,16 @@ package com.bridgelabz.algorithmprograms;
 
 import java.util.Scanner;
 
-public class MergeSort {
+public class MergeSort<T extends Comparable<T>> {
+	
 
-	void merge(String wordArray[], int left, int middle, int right) {
+	public void merge(T wordArray[], int left, int middle, int right) {
 
 		int sizeOfLeft = middle - left + 1;
 		int sizeOfRight = right - middle;
-
-		String leftArray[] = new String[sizeOfLeft];
-		String rightArray[] = new String[sizeOfRight];
+		
+		T[] leftArray = (T[]) new Comparable[sizeOfLeft];
+		T[] rightArray = (T[]) new Comparable[sizeOfLeft];
 
 		for (int leftArrayIndex = 0; leftArrayIndex < sizeOfLeft; ++leftArrayIndex)
 			leftArray[leftArrayIndex] = wordArray[left + leftArrayIndex];
@@ -43,20 +44,23 @@ public class MergeSort {
 			index2++;
 			sortedArrayindex++;
 		}
+		
+		
 	}
 
-	void mergeSort(String wordArray[], int left, int right) {
+	public void mergeSort(T wordArray[], int left, int right) {
 		if (left < right) {
 
 			int middle = left + (right - left) / 2;
 			mergeSort(wordArray, left, middle);
 			mergeSort(wordArray, middle + 1, right);
 			merge(wordArray, left, middle, right);
+			
 		}
 
 	}
 
-	public void printArray(String[] wordArray) {
+	public void printArray(T[] wordArray) {
 		int sizeOfArray = wordArray.length;
 		for (int index = 0; index < sizeOfArray; index++) {
 			System.out.print(wordArray[index] + " ");
@@ -65,27 +69,26 @@ public class MergeSort {
 
 	public static void main(String[] args) {
 
-		MergeSort sortObject = new MergeSort();
+		MergeSort<Integer> sortObject = new MergeSort<Integer>();
 		Scanner scannerObject = new Scanner(System.in);
 
-		System.out.println("Enter the number of words: ");
+		System.out.println("Enter the Size of the Array ");
 		int sizeOfArray = scannerObject.nextInt();
-		String[] wordArray = new String[sizeOfArray];
+		Integer[] wordArray = new Integer[sizeOfArray];
 
-		System.out.println("Enter words");
+		System.out.println("Enter Array Elements");
 		for (int index = 0; index < sizeOfArray; index++) {
-			String word = scannerObject.next();
+			Integer word = scannerObject.nextInt();
 			wordArray[index] = word;
 		}
 		scannerObject.close();
 
-		System.out.println("The array of words are : ");
+		System.out.println("The array is : ");
 		sortObject.printArray(wordArray);
 		System.out.println("");
 		sortObject.mergeSort(wordArray, 0, sizeOfArray - 1);
-
+		
 		System.out.println("The sorted array is : ");
 		sortObject.printArray(wordArray);
-
 	}
 }
